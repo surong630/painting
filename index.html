@@ -4,8 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>画板</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  
+  <div id="canvas"></div>
+  <script>
+    var can = document.getElementById('canvas');
+    can.onclick = (e) => {
+      var div = document.createElement('div');
+      div.style.left = e.clientX + 'px';
+      div.style.top = e.clientY + 'px';
+      div.style.position = 'absolute';
+      div.style.width = '6px';
+      div.style.height = '6px';
+      div.style.background = 'black';
+      div.style.borderRadius = '50%'
+      div.style.marginLeft = '-3px';
+      div.style.marginTop = '-3px'
+      can.appendChild(div)
+    }
+  </script>
 </body>
 </html>
