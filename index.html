@@ -7,21 +7,30 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div id="canvas"></div>
+  <canvas id="canvas"></canvas>
   <script>
-    var can = document.getElementById('canvas');
-    can.onclick = (e) => {
-      var div = document.createElement('div');
-      div.style.left = e.clientX + 'px';
-      div.style.top = e.clientY + 'px';
-      div.style.position = 'absolute';
-      div.style.width = '6px';
-      div.style.height = '6px';
-      div.style.background = 'black';
-      div.style.borderRadius = '50%'
-      div.style.marginLeft = '-3px';
-      div.style.marginTop = '-3px'
-      can.appendChild(div)
+    var canvas = document.getElementById('canvas');
+    canvas.height = document.documentElement.clientHeight;
+    canvas.width = document.documentElement.clientWidth;
+    let painting = false;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'black';
+    ctx.strokeStyle = 'none';
+    canvas.onmousedown = function() {
+      painting = true
+    }
+    canvas.onmousemove = (e) => {
+      if(painting === true) {
+        ctx.beginPath();
+        ctx.arc(e.clientX, e.clientY, 10, 0, 2 * Math.PI)
+        ctx.stroke();
+        ctx.fill()
+      }else {
+        console.log('什么也不做');
+      }
+    };
+    canvas.onmouseup = function() {
+      painting = false
     }
   </script>
 </body>
