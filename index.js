@@ -37,6 +37,7 @@ if (isTouchDevice) { // 判断是不是移动端
   }
   // 当鼠标开始绘画的时候判断
   canvas.onmousemove = (e) => {
+    // 如果为真的情况下
     if(painting === true) {
     drawLine(last[0],last[1],e.clientX,e.clientY);
     ctx.stroke();
